@@ -89,9 +89,11 @@ UserList.prototype.addUser = function(username, from, to) {
 	return !exists;
 }
 
-UserList.prototype.randomUser = function(username, to, to) {
+UserList.prototype.randomUser = function(username) {
 	var user = this.has(username);
 	if (user) {
+		var from = user.from;
+		var to   = user.to;
 		var key  = langKey(to, from);
 		var list = usersLang[key];
 		var pos  = Math.floor(Math.random() * list.length);
@@ -113,21 +115,8 @@ function langKey(from, to) {
 	return from + "_" + to;
 }
 
-/* Room */
-var Room = function (members, roomname) {
-	this.members  = members;
-	this.roomname = roomname;
-}
-
-Room.prototype.addUser = function(username) {
-//    if (this.members["username"] != -1 && ) {
-		
-//	}
-};
-
-/* Push Notification */
-function sendToUser() {
-
+function randomUser(username) {
+	return userList.randomUser(username, from, to);
 }
 
 /* Register User */
@@ -364,13 +353,24 @@ app.get('/register/:user/:from/:to', function(req, res) {
 });
 
 // 104.236.28.245:4730/get/Gibolt
-// 104.236.28.245:4730/get/Modi
 app.get('/get/:user', function(req, res) {
     res.type('application/json');
 	var user = req.params.user;
 	var msgs = getMessages(user) || [];
 	console.log(msgs);
 	res.send(msgs);
+});
+
+app.get('/random/:user', function(req, res) {
+    res.type('application/json');
+	var user = req.params.user;
+	if (randomUser(user)) {
+		res.send({status:"failed"});
+	}
+	else {
+		console.log("Registered: " + user);
+		res.send({status:"success"});
+	}
 });
 
 // 104.236.28.245:4730/ping/Gibolt
