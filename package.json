@@ -15,7 +15,8 @@
     "jade": "~1.6.0",
     "mongo": "*",
     "mongoose": "*",
-    "passport": "*"
+    "passport": "*",
+    "passport-facebook": "*"
   },
   "devDependencies": {
     "browser-sync": "*",

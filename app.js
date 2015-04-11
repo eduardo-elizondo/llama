@@ -7,14 +7,15 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+
+// Database ============================
+mongoose.connect('mongodb://localhost:27017/llama-dev');
 // mongoose.connect('mongodb://root:catscatscats@45.55.134.228:27017/llama-dev');
-// mongoose.connect('mongodb://localhost:27017/llama-dev');
 
 
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
+// Server =============================
+// Start Server
 var app = express();
 
 // view engine setup
@@ -29,6 +30,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Passport ===========================
+// Authentication System
+require('./public/javascripts/passport.js')(passport);
+
+// routes =============================
+var routes = require('./routes/index')(passport);
+var users = require('./routes/users');
+
+// Define paths for views
 app.use('/', routes);
 app.use('/users', users);
 
