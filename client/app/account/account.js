@@ -18,5 +18,11 @@ angular.module('llamaApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .state('addlanguages', {
+        url: '/addlanguages',
+        templateUrl: 'app/account/addlanguages/addlanguages.html',
+        controller: 'addlanguagesCtrl',
+        authenticate: true
       });
   });
