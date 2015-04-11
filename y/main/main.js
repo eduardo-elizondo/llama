@@ -4,8 +4,8 @@ angular.module('llamaApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
+        url: 'y',
+        templateUrl: '../y/main/main.html',
         controller: 'MainCtrl'
       });
   });
