@@ -5,6 +5,7 @@ FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(passport) {
 
+
   passport.serializeUser(function(user, done) {
     done(null, user);
   });
@@ -16,15 +17,12 @@ module.exports = function(passport) {
 
   passport.use(new FacebookStrategy({
     clientID: 387071788139332,
-    clientSecret: 387071788139332,
-    callbackURL: "auth/facebook/callback"
+    clientSecret: "934060bad9ae5e306cb2f0a40a4a56b6",
+    callbackURL: "/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log('hey');
-    // User.findOrCreate(..., function(err, user) {
-    //   if (err) { return done(err); }
-    //   done(null, user);
-    // });
+    console.log('entered');
+    return done(null,profile);
   }));
 
 

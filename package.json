@@ -16,7 +16,8 @@
     "mongo": "*",
     "mongoose": "*",
     "passport": "*",
-    "passport-facebook": "*"
+    "passport-facebook": "*",
+    "express-session": "*"
   },
   "devDependencies": {
     "browser-sync": "*",
