@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var config = require('./config/environment');
 
 // Connect to database
-mongoose.connect(config.mongo.uri, config.mongo.options);
+mongoose.connect('mongodb://localhost:27017/llama-dev');
 
 // Populate DB with sample data
 if(config.seedDB) { require('./config/seed'); }
