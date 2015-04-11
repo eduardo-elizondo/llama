@@ -9,20 +9,12 @@ angular.module('llamaApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
+    $scope.addRegister = function() {
+      if($scope.nativeLang === '' || $scope.learningLang === '') {
         return;
       }
-      $http.post('/api/things', { name: $scope.newThing });
+      $http.post('/api/register', { user: Auth.getCurrentUser, from: $scope.nativeLang, to: $scope.learningLang });
       $scope.newThing = '';
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
-    
   });
