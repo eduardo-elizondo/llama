@@ -7,7 +7,9 @@ User = mongoose.model('User', userSchema);
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Llama' });
+  res.render('index', {
+    title: 'Llama',
+  });
 });
 
 router.get('/checklogin', function(req,res) {
