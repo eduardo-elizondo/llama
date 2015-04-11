@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/llama-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };
