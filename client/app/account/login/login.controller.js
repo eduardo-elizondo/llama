@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('llamaApp')
+angular.module('demoApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};

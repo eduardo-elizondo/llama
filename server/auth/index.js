@@ -11,6 +11,7 @@ require('./facebook/passport').setup(User, config);
 require('./google/passport').setup(User, config);
 require('./twitter/passport').setup(User, config);
 
+
 var router = express.Router();
 
 router.use('/local', require('./local'));
