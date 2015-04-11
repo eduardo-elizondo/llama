@@ -6,7 +6,9 @@ angular.module('llamaApp')
       'home': 'Home',
       'home_link': '/',
       'about': 'About',
-      'about_link': '/about'
+      'about_link': '/about',
+      'chat': 'Chat',
+      'chat_link': '/chat'
     }];
 
     $scope.isCollapsed = true;
