@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  form(action='/finishuserlogin', method='post')
+    h1 Finish your account
+    h5 What is your native language?
+    input(type='text', name='nativeLanguage')
+    h5 What language you are learning?
+    input(type='text', name='learningLanguage')
+    input(type='hidden' value="#{user}") 
+    input(type='submit', name='submit', value='Submit')

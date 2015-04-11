@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var expressSession = require('express-session');
 
 
 // Database ============================
@@ -34,6 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Passport ===========================
 // Authentication System
 require('./public/javascripts/passport.js')(passport);
+app.use(expressSession({ secret: 'thisIsSomeClientSecret' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // routes =============================
 var routes = require('./routes/index')(passport);
